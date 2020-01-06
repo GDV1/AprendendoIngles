@@ -12,17 +12,25 @@
         </div>
         <div class="row">
             <div class="col">
-                <h6>Traduza a frase:</h6>
-                <p>How are you?</p>
+                <h6>{{ instrucao }}</h6>
+                <p>{{ frases[0].fraseEng }}</p>
 
                 <div class="form-group">
-                    <textarea class="form-control" cols="30" rows="5"></textarea>
+                    <textarea 
+                        class="form-control" 
+                        cols="30" rows="5" 
+                        (input)="atualizaResposta($event.target.value)"
+                    ></textarea>
                 </div>
                 
                 <div class="row">
                     <div class="col">
                         <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary">Verificar</button>
+                            <button 
+                                type="button" 
+                                class="btn btn-primary"
+                                (click)="verificarResposta()"
+                            >Verificar</button>
                         </div>
                     </div>
                 </div>
