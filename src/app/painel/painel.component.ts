@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { Frase } from '../shared/frase.model';
 import { FRASES } from './frases-mock';
@@ -17,12 +17,14 @@ export class PainelComponent implements OnInit {
   public rodada = 0;
   public rodadaFrase: Frase;
 
+  // Expõe a variável para outros componentes
+  public progresso = 0;
+
   constructor() {
     this.rodadaFrase = this.frases[this.rodada];
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public atualizaResposta(resposta: string): void {
     this.resposta = resposta;
@@ -34,10 +36,14 @@ export class PainelComponent implements OnInit {
       // Atualiza a rodada
       this.rodada++;
 
+      // Atualiza o progresso
+      this.progresso = this.progresso + (100 / this.frases.length);
+
       // Atualiza a frase exibida no template
       this.rodadaFrase = this.frases[this.rodada];
     } else {
       alert('Tradução errada. Tente novamente');
     }
   }
+
 }
