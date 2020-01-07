@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Frase } from '../shared/frase.model';
 import { FRASES } from './frases-mock';
@@ -17,8 +17,9 @@ export class PainelComponent implements OnInit {
   public rodada = 0;
   public rodadaFrase: Frase;
 
-  // Expõe a variável para outros componentes
   public progresso = 0;
+
+  public tentativas = 3;
 
   constructor() {
     this.atualizaRodada();
@@ -42,7 +43,12 @@ export class PainelComponent implements OnInit {
       // Atualiza a frase exibida no template
       this.atualizaRodada();
     } else {
-      alert('Tradução errada. Tente novamente');
+      // Decrementar a variável tentativas
+      this.tentativas--;
+
+      if (this.tentativas === -1) {
+        alert('O Jogo acabou!');
+      }
     }
   }
 
