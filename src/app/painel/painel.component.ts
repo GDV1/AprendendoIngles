@@ -12,7 +12,7 @@ export class PainelComponent implements OnInit {
 
   public instrucao = 'Traduza a frase';
   public frases: Frase[] = FRASES;
-  public resposta: string;
+  public resposta = '';
 
   public rodada = 0;
   public rodadaFrase: Frase;
@@ -21,7 +21,7 @@ export class PainelComponent implements OnInit {
   public progresso = 0;
 
   constructor() {
-    this.rodadaFrase = this.frases[this.rodada];
+    this.atualizaRodada();
   }
 
   ngOnInit() { }
@@ -40,10 +40,17 @@ export class PainelComponent implements OnInit {
       this.progresso = this.progresso + (100 / this.frases.length);
 
       // Atualiza a frase exibida no template
-      this.rodadaFrase = this.frases[this.rodada];
+      this.atualizaRodada();
     } else {
       alert('Tradução errada. Tente novamente');
     }
   }
 
+  public atualizaRodada(): void {
+    // Atualiza a frase exibida no template
+    this.rodadaFrase = this.frases[this.rodada];
+
+    // Limpa o campo de texto
+    this.resposta = '';
+  }
 }
