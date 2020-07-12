@@ -121,6 +121,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "AprendendoIngles"
+    }
+  },
+  "defaultProject": "AprendendoIngles",
+  "cli": {
+    "analytics": "758ee0c2-92b1-4963-86b1-3b846822296e"
+  }
 }
